@@ -1,0 +1,99 @@
+..................................................Intro to Strings..........................................................
+What is a string ?
+It is an array of characters
+It is immutable
+
+// var s = ['a','b','c']
+console.log(s[1]);    // b
+
+.................................................String functions............................................................
+
+var s = "abcz";
+var size = s.length;                                                  // size of string
+console.log(size);                       // 4
+console.log(s.charAt(2))                // b                        // Returns the character that is present on given index or position
+console.log(s.charCodeAt(3));          // 122 (asci code of z)     // Returns the asci code of a character present on a index
+ 
+var s1 ="xyx";
+console.log(s1 + s);                 //xyxabcz                   // If you have to add/concatenate two strings
+console.log(s1.concat(" ",s));      //xyx abcz
+
+
+// checks if string ends with some other string returns boolean values.
+var str = "I am learning, strings in, session"
+console.log(str.endsWith('in'));         //false
+console.log(str.startsWith("I a"));     // true
+
+
+// Check if a substring is present or not in a string
+console.log(str.includes("ing"));     // true
+
+
+//To repeat a string with n no of times
+var x="Javascript";
+console.log(x.repeat(3));       //JavascriptJavascriptJavascript     
+
+// How you can find index of subtring
+var str = "I am learning, strings in, session"
+console.log(str.indexOf("ing"));                 // 10
+console.log(str.indexOf("xyz"));                // -1
+console.log(str.lastIndexOf("ing"));           // 18
+
+
+// Given a sentence return all its words. Note that the split (,) is not included. 
+var str = "Iam, learning, in, session";
+console.log(str.split(","))                  // [ 'Iam', ' learning', ' in', ' session' ]
+
+ // You need to remove all commas from string
+ console.log(str.replace(",", ""));         // How we can remove all commas using replace ? using RegeX
+ console.log(str.replaceAll(",", ""));
+
+ // You want to generate a substring of string
+ var str= "I am learning, strings in, session"
+ console.log(str.substring(2,13));         // am learning
+ console.log(str.slice(2,13));            // am learning
+ 
+ //Search a string and if found return its starting index
+ var str="JavaScript is a scripting language"
+ console.log(str.search("scripting"));    // 16
+ 
+ //Find all occureneces of a substring in a string
+ let myString = "John Doe has 5 oranges while Jane Doe has only 2 oranges, Jane gave Mike 1 of her orange so she is now left with only 1 Orange.";
+ let mySubString = "orange";
+ let count = myString.split(mySubString).length - 1;
+ console.log(count); // 3
+ 
+ //Triming white spaces at starting and ending of a string
+ var str1 = "  xyx  pqr  ";
+ console.log(str1.trim());                //xyx pqr;
+
+....................................................RegX -Regular Expressions..................................................
+
+What is RegX ?
+A regular expression is a sequence of characters that specifies a match pattern in text.
+
+Syntax:
+/character/gi     -> g-> Global  i-> It ignores upper and lower cases
+
+ 
+ match() Function is an inbuilt function in JavaScript used to search a string for a match against any regular expression. 
+ If the match is found, then this will return the match as an array.
+
+const paragraph = 'The quick brown fox jumps over the lazy dog. It barked.';
+const regex = /[A-Z]/g;                     //To search all letters from A to Z.
+const regex1 = /[a,e,i,o,u]/g;            //To search all vowels inside string paragraph
+const found = paragraph.match(regex);
+console.log(found);                       // output: Array ["T", "I"]
+const found1 = paragraph.match(regex1);  
+console.log(found1);                     // output: ['e', 'u', 'i', 'o', 'o', 'u', 'o', 'e', 'e', 'a', 'o', 'a','e']
+
+ var str = "JavaScript is a scripting language, high level, synchronous language";
+ var str2 = "This is a sample string which is good. IS  Is, iS";
+ // I want to find all occurrences of is
+ var regex = /is/gi;                        //g-> Global  i-> case sensitive search (upper and lower cases) are considered.
+ console.log(str2.match(regex).length);    // 6
+
+console.log(str);                         // JavaScript is a scripting language, high level, synchronous language
+console.log(str.replace(/,/g, ""));       // JavaScript is a scripting language high level synchronous language
+
+...............................................................................................................................
