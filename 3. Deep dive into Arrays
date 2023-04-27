@@ -127,7 +127,7 @@ var a=[1,2,3]
 var res=arr.reduce((number)=>number+5)
 console.log(res)  //11
 
-..................................................................................................................................
+.................................................................................................................................
 
 Difference between map and filter
 -> Map creates a new array and stores a transformed array using function provided.
