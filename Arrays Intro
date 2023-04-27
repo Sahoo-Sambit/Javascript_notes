@@ -1,0 +1,112 @@
+.......................................................Intro to Arrays.........................................................................
+
+What is an array?
+It is a data structure used to store data in a linear sequencial fashion.
+In javascript we can store various types of data in an array.
+
+var books = ["RD Sharma", "Maths", 12, true]    //Storing data in array
+
+Arrays can be created by:
+array literal -->              var arr = [];
+Array object creation -->      var arr  = new Array();
+Using array constructor -->    var arr=new Array("Jai","Vijay","Smith"); 
+
+
+........................................................Array Methods............................................................................
+
+var a=[1,2,3,4,5]
+var b=a;
+b.push(6);            //Inserts element to the end of array
+console.log(b);       //[1,2,3,4,5,6]
+b.pop();              //Removes last element from array
+console.log(b);       //[1,2,3,4,5]
+b.shift();            //Removes first element from array
+console.log(b);       //[2,3,4,5]
+b.unshift("Sambit");  //Inserts element to the starting of array
+console.log(b);       //["Sambit", 2,3,4,5]
+
+Syntax of splice method:
+b.splice(index, delete count, data need to be added)
+starting index is compulsory, rest all are optional
+
+b.splice(1,2,"Sahoo")
+console.log(b)        //["Sambit","Sahoo",4,5]
+console.log(a)        //["Sambit","Sahoo",4,5]      Because of shallowing copying
+
+
+# In JavaScript, objects and arrays are reference types, 
+meaning that when you assign an object or array to a variable or pass it to a function, 
+you are actually passing a reference to the original object or array rather than a copy of it.
+
+.......................................................Deep and Shallow Copy........................................................................
+
+# Deep copying and shallow copying are two ways of creating a copy of an object or array in JavaScript.
+
+# Shallow copy
+->  A shallow copy means that certain values are still connected to the original variable.
+-> Any changes in new variable is also reflected in original variable.
+->  Shallow copying creates a new object or array, but it only copies the references to the properties of the original object or array. 
+    This means that if you modify a property of the new object or array, the corresponding property in the original object or array will also be modified. 
+->  e.g. are shift(), unshift(), push(), pop(), assignment operators
+
+# Deep Copy
+->  A deep copy means that all of the values of the new variable are copied and disconnected from the original variable.
+->  Any changes in new variable is not reflected in original variable.
+->  e.g. JSON.parse(), JSON.stringify(), arr.map(), arr.filter(), etc. 
+->  e.g.    const a = 5
+            let b = a // this is the copy
+            b = 6
+            console.log(b) // 6
+            console.log(a) // 5
+    
+    const original = {a: 1, b: {c: 2}};
+    const deepCopy = JSON.parse(JSON.stringify(original));
+    deepCopy.b.c = 3;
+    console.log(original.b.c); // 2
+    
+var arr=[1,2,3]
+var result=arr.map((number)=>number+5)
+console.log(result)     //[6,7,8]
+result[0]="sambit";    
+console.log(result)     //["sambit",7,8]
+console.log(arr);       //[1,2,3]
+
+-> Similarly with filter, deep copy takes place.
+
+........................................................More Array functions....................................................................
+
+a=[],b=[];
+a.concat(b);  // Where a and b are arrays but they are joined together into a single array
+a.fill("Element to be inserted",starting index, ending index-1)  //["Sambit", 0 , 2] It fills Sambit in array a at position 0 and 1 only.
+a.every(function);   // It determines whether all the elements of an array are satisfying the provided function conditions. returns true or false
+
+var marks=[50,40,45,37,20];  
+function check(value)  
+{return value>30;}  //return false, as marks[4]=20  
+
+a.find(function);       //It returns the value of the first element in the given array that satisfies the specified condition.
+var arr=[1,2,3,5,45]
+var res=arr.find((num)=>num>4)
+console.log(res);   //5
+
+arr.includes()          //It returns boolean value after checking it includes in array or not.
+var arr=["AngularJS","Node.js","JQuery"]  
+var result=arr.includes("AngularJS", 0); // 0 is optional, tells position from where searching should start 
+
+a.indexOf()                                       //Returns index of element
+a.lastIndexOf()                                  //Returns index of last occurence of element
+Array.isArray(a)                                //Returns whether a is array or not
+arr.join('anycharacter') or arr.join();        //Joins the array of elements into single string
+arr.reverse()                                 //Reverses the array elements
+arr.sort()                                   //Sorts the array in lexicographically order. A,B,C is smaller than a,b,c 
+arr.sort((a,b)=>return a-b);                //Sorts the array in ascending order
+arr.sort((a,b)=>return b-a);               //Sorts the array in descending order
+arr.toString();                           //Converts the array to string
+.................................................................................................................................
+
+* Question 1
+
+var arr=[1,2,3,5,45]
+var res=arr.toString();
+console.log(res.indexOf(3));        // 4  commas are included in string
+console.log(arr.indexOf(3));        // 2  commas not included in array (searches array element return it's index)
