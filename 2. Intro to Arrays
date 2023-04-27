@@ -102,7 +102,7 @@ arr.sort()                                   //Sorts the array in lexicographica
 arr.sort((a,b)=>return a-b);                //Sorts the array in ascending order
 arr.sort((a,b)=>return b-a);               //Sorts the array in descending order
 arr.toString();                           //Converts the array to string
-.................................................................................................................................
+..................................................................................................................................
 
 * Question 1
 
