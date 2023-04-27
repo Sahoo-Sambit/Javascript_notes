@@ -1,0 +1,134 @@
+......................................................Loops in Arrays...........................................................
+for-of loop   -> Used to access values
+
+example:    const arr = [1,2,3,4];
+for (const element of arr){
+  console.log(element)      //"1" 
+                            //"2" 
+                            //"3" 
+                            //"4"
+}
+
+for-in loop     -> Used to access index
+
+example:    const arr = [10,20,30,40];
+for (const index in arr){
+   console.log(index, arr[index])   //0  10
+                                    //1  20
+                                    //2  30
+                                    //3  40
+}
+We can also access values using indices.
+
+for-each loop   -> Higher order function, passing function to every index of array. It takes in both array element value and its index as parameter.
+
+example:    var arr = [10,20,30,40]
+arr.forEach((a,b,c,d)=>{           // It takes in value, index, array as parameter. c,d are not required
+    console.log(a,b,c,d);          // 10 0 [10,20,30,40] undefined
+                                   // 20 1 [10,20,30,40] undefined
+                                   // 30 2 [10,20,30,40] undefined
+                                   // 40 3 [10,20,30,40] undefined
+})
+
+................................................................................................................................
+
+Higher-Order Functions
+-> A function which takes in another function as arguement or returns a function.
+forEach(), .reduce(), .map(), .filter(), etc. are higher order functions.
+
+e.g -> arr.forEach(function); //It is a higher order function
+       arr.indexOf(5);        //It is not a higher order function
+.................................................................................................................................
+
+Javascript functions are first class objects.
+-> They have built-in properties and methods such as .name property, .toString() method
+-> They can be passed as arguments and returned from other functions.
+-> They can be assigned to variables, array elements, and other objects.
+
+example: 
+const originalFunc = (num) => { return num + 2 };
+
+//Re-assign the function to a new variable newFunc
+const newFunc = originalFunc;
+
+//Access the function's name property
+newFunc.name; //'originalFunc'
+
+//Return the function's body as a string
+newFunc.toString();
+
+.......................................Array Destructuring & Spread Operators.....................................................
+
+Array Destructuring:
+Array destructuring allows you to extract values from an array and assign them to variables in a single statement.
+
+example:
+const numbers = [1, 2, 3];
+const [a, b, c] = numbers;
+console.log(a, b, c);       // Output: 1 2 3
+
+
+Spread Operators
+->  The spread operator (...) is used to expand an array into individual elements.
+->  It performs deep copy (any changes in new array is not reflected to old array).
+
+example:
+const numbers = [1, 2, 3];
+const newNumbers = [...numbers, 4, 5, 6];
+console.log(newNumbers);                  // Output: [1, 2, 3, 4, 5, 6]
+console.log(numbers);                     // Output: [1, 2, 3]
+
+........................................................arr.map() function.......................................................
+
+-> It creates a new array by calling a function for each element of an existing array, and returning the result.
+-> The length of the new array created by map() is the same as the length of the original array.
+-> The map() method does not modify the original array (shallow copy)..
+-> It performs changing in property values, generate new values in array from original array.
+
+Example:
+var arr=[1,2,3,4,5,6,7,8,9,0]
+var result=arr.map((number)=>number*5)
+console.log(result) //[5, 10, 15, 20, 25, 30, 35, 40, 45,  0]
+
+..................................................................................................................................
+
+............................................................arr.filter()..........................................................
+
+-> It creates a new array containing only the elements of an existing array that satisfy a condition specified by a function.
+-> The length of the new array created by filter() can be less than or equal to the length of the original array.
+-> It does not modify the original array (shallow copy).
+-> The function passed to filter() should return a Boolean value indicating whether the corresponding element should be included in the new array 
+else empty array will be printed.
+
+Example:
+var arr=[1,2,,3,4,5,6,7,8,9,0]
+var result=arr.filter((number)=>{number>5})
+//it returns true or undefined
+var result=arr.filter((number)=>number>5)
+//it returns true or false value
+console.log(result)
+
+.................................................................................................................................
+
+
+...........................................................arr.reduce()..........................................................
+
+-> This js method is used to reduce an array into a single value by applying a function to each element of array. 
+
+Example 1:
+var arr=[1,2,3,4,5]
+const result= arr.reduce((accumulator, arrayvalue)=>{
+return accumulator+arrayvalue;
+}, 10) //0 is the default value assigned to accumulator
+console.log(result) //10+1+2+3+4+5=25
+
+Example 2:
+var a=[1,2,3]
+var res=arr.reduce((number)=>number+5)
+console.log(res)  //11
+
+..................................................................................................................................
+
+Difference between map and filter
+-> Map creates a new array and stores a transformed array using function provided.
+-> Filter is used to filter elements from array using conditional statements true or false.
