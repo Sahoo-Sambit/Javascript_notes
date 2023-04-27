@@ -1,0 +1,124 @@
+......................................................Intro to Functions..............................................................
+What are functions in JS ?
+JavaScript functions are used to perform operations. 
+We can call JavaScript function many times to reuse the code.
+We can call function by passing arguments.
+It returns a value.
+
+Advantages:
+Code Resusability, Less Coding.
+
+.......................................................Sync vs Async Functions.........................................................
+
+Sync Programming  : Sync is single-thread, so only one operation or program will run at a time. 
+                    In synchronous programming, a task is performed one after another in a sequential manner. 
+                    The program waits for each task to complete before moving on to the next one.
+                    Sync is blocking — it will only send the server one request at a time and will wait for that request to be answered by the server.
+                    Simpler to understand.
+                    Slower and less efficient.
+
+Async Programming : Async is non-blocking, which means it will send multiple requests to a server. 
+                    It allows multiple tasks to run simultaneously without waiting for the completion of the previous task.
+                    This is achieved through the use of callbacks, promises, or async/await functions, which allow the program to continue executing while waiting for                     a task to complete.
+                    Complex if the code is not written properly.
+                    Better performance and more efficient in time management.
+
+
+.......................................................................................................................................
+
+
+......................................................call, apply, bind methods........................................................
+
+call () : This method is used to call a function and pass objectname as this value in call() function. It takes other arguments for functions separately.
+Function Borrowing takes place.
+    
+const human={
+    firstname:"Sambit",
+    lastname: "Sahoo",
+    age: 23
+    }
+const human1={
+        firstname:"Abhishek",
+        lastname: "Sahu",
+        age: 24
+        }
+    function greet(hometown,state){
+    const str=`My name is ${this.firstname} ${this.lastname}. I am ${this.age} years old. I live in ${hometown}, ${state}`;
+    console.log(str);                        
+    }
+    greet.call(human,"Rourkela","Odisha");    //My name is Sambit Sahoo. I am 23 years old. I live in Rourkela, Odisha
+    greet.call(human1,"Cuttack","Odisha");    //My name is Abhishek Sahu. I am 24 years old. I live in Cuttack, Odisha
+    
+apply()  :  It is similar to call method but it takes other arguments as an array list.
+   
+    greet.apply(human, ["Rourkela","Odisha"]) //My name is Sambit Sahoo. I am 23 years old. I live in Rourkela, Odisha
+    
+bind()   :  It works like an object borrowing a method from another object. Below example shows student2 object is borrowing the method introduction from student1.
+
+// object definition
+const student1 = {
+  name: "Jack",
+  grade: "5",
+  introduction: function () {
+    console.log(this.name + "studies in grade" + this.grade + ".");
+  },
+};
+
+// object definition
+const student2 = {
+  name: "Jimmy ",
+  grade: " 6",
+};
+
+// the object student2 is borrowing introduction method from student1
+let result= student1.introduction.bind(student2);
+
+// invoking introduction() function
+result();
+
+// Output:
+// Jimmy studies in grade 6.
+
+.........................................................Async Functions...............................................................
+
+What is async function?
+In this, the execution of code moves to the next line even after not finishing the current line of code.
+Async Function is a function which is designed to handle multiple tasks simultaneously rather than executing them one after the other line by line.
+
+Advantages:
+1. Better performance (mutlitasking)
+2. More control over flow of program
+3. Error handling more effectively
+4. Perform tasks without blocking the execution of other code
+
+Disadvantages:
+1. Requires Promises
+2. Debugging is more challenging than synchronous code
+3. Potential for callback hell
+4. Limited browser support earlier browsers dont' support.
+
+.......................................................CallBack Functions...............................................................
+
+What is a callback function?
+It is a function that is passed as an arguement to another function and is executed by that function.
+Used in JS to handle Async events such as fetching data from server or responding to user input.
+In JavaScript, functions are first-class objects, functions can be passed as arguments.
+
+Advantages:
+1. Reusability
+2. Automation
+3. Simplicity
+4. Simple to write
+
+Disadvantages:
+1. Callback hell
+2. Error handling in callback functions can be challenging
+3. Debugging can be challenging
+
+..........................................................Callback Hell..................................................................
+What is callback Hell ?
+-> Calling multilevels of nested callbacks to handle async operations in javascript.
+-> It makes callback functions difficult to read and maintain.
+-> Difficult to understand
+-> Difficult to debug 
+-> Difficult to maintain code
