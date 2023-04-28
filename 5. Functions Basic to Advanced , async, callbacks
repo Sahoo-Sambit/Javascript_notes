@@ -8,7 +8,7 @@ It returns a value.
 Advantages:
 Code Resusability, Less Coding.
 
-.......................................................Sync vs Async Functions.........................................................
+.......................................................Sync vs Async Functions..........................................................
 
 Sync Programming  : Sync is single-thread, so only one operation or program will run at a time. 
                     In synchronous programming, a task is performed one after another in a sequential manner. 
@@ -24,7 +24,7 @@ Async Programming : Async is non-blocking, which means it will send multiple req
                     Better performance and more efficient in time management.
 
 What is sync programming ?
-The execution do not move to next line untill its finishes current line of code execution.
+The execution do not move to next line until it finishes current line of code execution.
 What is async programming ?
 The execution can move to next line of code without fully executing current line of code.
 .......................................................................................................................................
@@ -103,7 +103,7 @@ Disadvantages:
 .......................................................CallBack Functions...............................................................
 
 What is a callback function?
-It is a function that is passed as an arguement to another function and is executed by that function.
+It is a function that is passed as an argument to another function and is executed by that function.
 Used in JS to handle Async events such as fetching data from server or responding to user input.
 In JavaScript, functions are first-class objects, functions can be passed as arguments.
 
@@ -119,9 +119,12 @@ Disadvantages:
 3. Debugging can be challenging
 
 ..........................................................Callback Hell..................................................................
+
 What is callback Hell ?
 -> Calling multilevels of nested callbacks to handle async operations in javascript.
 -> It makes callback functions difficult to read and maintain.
 -> Difficult to understand
 -> Difficult to debug 
 -> Difficult to maintain code
+
+........................................................................................................................................
