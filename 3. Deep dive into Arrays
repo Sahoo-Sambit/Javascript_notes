@@ -106,10 +106,9 @@ else empty array will be printed.
 Example:
 var arr=[1,2,,3,4,5,6,7,8,9,0]
 var result=arr.filter((number)=>{number>5})
-//it returns true or undefined
+console.log(result)                             //  it returns empty array
 var result=arr.filter((number)=>number>5)
-//it returns true or false value
-console.log(result)
+console.log(result)                             //  it returns true all true values satisfying the condition
 
 .................................................................................................................................
 
@@ -118,17 +117,22 @@ console.log(result)
 
 -> This js method is used to reduce an array into a single value by applying a function to each element of array. It performs deep copy.
 
+Steps:
+-> The first time that the callback is run there is no "return value of the previous calculation". 
+->  If supplied, an initial value may be used in its place. 
+->  Otherwise the array element at index 0 is used as the initial value and iteration starts from the next element (index 1 instead of index 0).
+
 Example 1:
 var arr=[1,2,3,4,5]
-const result= arr.reduce((accumulator, arrayvalue)=>{
-return accumulator+arrayvalue;
-}, 10) //0 is the default value assigned to accumulator
-console.log(result) //10+1+2+3+4+5=25
+const result= arr.reduce(( accumulator, otherelements)=>{
+accumulator  + otherelements;
+}, 10)                                        //  10 is the default value assigned to accumulator , if 10 is not assigned, then accumulator = 1.
+console.log(result)                           //  10+1+2+3+4+5=25
 
 Example 2:
-var a=[1,2,3]
-var res=arr.reduce((number)=>number+5)
-console.log(res)  //11
+var a=[1,2,3,4,5]
+var res=arr.reduce((number)=> {return number+5})     Wrong !    //Single input is wrong approach
+console.log(res)  // 11
 
 .................................................................................................................................
 
