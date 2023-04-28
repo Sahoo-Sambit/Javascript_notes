@@ -81,11 +81,11 @@ a.fill("Element to be inserted",starting index, ending index-1)  //["Sambit", 0 
 a.every(function);   // It determines whether all the elements of an array are satisfying the provided function conditions. returns true or false
 
 var marks=[50,40,45,37,20];  
-function check(value)  
-{return value>30;}  //return false, as marks[4]=20  
+var result = marks.every((number)=>{return number>20});
+console.log(result);                                  //return false, as marks[4]=20  
 
-a.find(function);       //It returns the value of the first element in the given array that satisfies the specified condition.
-var arr=[1,2,3,5,45]
+a.find(function);               //It returns the value of the first element in the given array that satisfies the specified condition.
+var arr=[1,2,3,5,45]            //if true, returns the number else return undefined
 var res=arr.find((num)=>num>4)
 console.log(res);   //5
 
