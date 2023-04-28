@@ -33,7 +33,6 @@ b.splice(1,2,"Sahoo")
 console.log(b)        //["Sambit","Sahoo",4,5]
 console.log(a)        //["Sambit","Sahoo",4,5]      Because of shallowing copying
 
-
 # In JavaScript, objects and arrays are reference types, 
 meaning that when you assign an object or array to a variable or pass it to a function, 
 you are actually passing a reference to the original object or array rather than a copy of it.
