@@ -11,7 +11,7 @@ console.log(s[1]);    // b
 var s = "abcz";
 var size = s.length;                                                  // size of string
 console.log(size);                       // 4
-console.log(s.charAt(2))                // b                        // Returns the character that is present on given index or position
+console.log(s.charAt(2))                // c                        // Returns the character that is present on given index or position
 console.log(s.charCodeAt(3));          // 122 (asci code of z)     // Returns the asci code of a character present on a index
  
 var s1 ="xyx";
@@ -41,8 +41,8 @@ console.log(str.lastIndexOf("ing"));           // 18
 
 
 // Given a sentence return all its words. Note that the split (,) is not included. 
-var str = "Iam, learning, in, session";
-console.log(str.split(","))                  // [ 'Iam', ' learning', ' in', ' session' ]
+var str = "Iam,learning,in,session";
+console.log(str.split(","))                  // [ 'Iam', 'learning', 'in', 'session' ]
 
  // You need to remove all commas from string
  console.log(str.replace(",", ""));         // How we can remove all commas using replace ? using RegeX
@@ -53,6 +53,9 @@ console.log(str.split(","))                  // [ 'Iam', ' learning', ' in', ' s
  console.log(str.substring(2,13));         // am learning
  console.log(str.slice(2,13));            // am learning
  
+ -> splice() is used in arrays and slice() is used in strings.
+ -> splice() performs removal and adding elements but slice() performs only extraction of a substring from a string.
+ 
  //Search a string and if found return its starting index
  var str="JavaScript is a scripting language"
  console.log(str.search("scripting"));    // 16
@@ -60,7 +63,7 @@ console.log(str.split(","))                  // [ 'Iam', ' learning', ' in', ' s
  //Find all occureneces of a substring in a string
  let myString = "John Doe has 5 oranges while Jane Doe has only 2 oranges, Jane gave Mike 1 of her orange so she is now left with only 1 Orange.";
  let mySubString = "orange";
- let count = myString.split(mySubString).length - 1;
+ let count = myString.split(mySubString).length - 1;         //split checks for equal cases. It considers oranges as orange also. But not Orange.
  console.log(count); // 3
  
  //Triming white spaces at starting and ending of a string
