@@ -1,0 +1,109 @@
+What is javascript objects ?
+-> An object is a standalone entity, with properties and methods.
+-> It is a Non-Primitive datatype: Not created by javascript. Created by developer
+-> Used to store data in key-value pairs.
+
+
+
+Why we use Js objects ?
+-> Whenever we want to store data in key-value pair.
+var student = { name: "Sambit" class: "5"}
+-> Note that keys value should be unique, else the duplicate key will override the previous key.
+
+we can also store objects inside array.
+var arr = [{name: "Sambit"},{name: "Sahoo"}]
+console.log(arr[0]["name"])   //Sambit
+delete arr[0]["name"]
+console.log(arr)        // array with 2 indices which has 1 empty object and another object {name: "Sahoo}
+
+They are mutable.
+It can store any type of data.
+
+
+
+Different ways to create object ?
+
+-> var obj = {};  //creates an empty object in memory
+-> var person = new Object();
+
+let Student = {
+  name: "Lisa",
+  age: 24,
+  marks: 78.9,
+};
+
+// create object from Student prototype
+->  let std1 = Object.create(Student); //prototype shouldnot be empty, else it will throw error
+
+
+
+
+How to access value from keys ?
+# Using dot notation
+var student = {name:"Sambit"}
+console.log(student.name); //Sambit
+
+#Using square notation 
+console.log(student["name"]);   //always double quotes is compulsory.
+
+
+Object.keys(objectname)     -> Returns all object keys and stores in an array
+Object.values(objectname)   -> Returns all object values and stores in an array
+Object.entries(objectname)  -> Creates a 2-D matrix and stores keys and values inside 2-D array
+Object. assign(objectname) does not copy prototype properties and methods. This method does not create a deep copy of Source Object, it makes a shallow copy of the data.
+
+How to push object into an array ?
+arr.push(obj);    // arr is the array and obj is object. 
+
+
+
+Given a student object print all keys and values
+var student = { name: "Lisa", age: 24, marks: 78.9 };
+var userKeys = Object.keys(student)
+var userValues = Object.values(student)
+console.log(userKeys)           // [ 'name', 'age', 'marks' ]
+
+//Using Iterator to print all keys and values. Input given is an array.
+userKeys.forEach((keys)=>{console.log(keys,student[keys])})  // name Lisa age 24 marks 78.9
+
+var userValues = Object.entries(student)
+console.log(userValues)       // [ [ 'name', 'Lisa' ], [ 'age', 24 ], [ 'marks', 78.9 ] ]
+userValues.forEach((arr)=>{console.log(arr[0])})    // Prints all keys
+userValues.forEach((arr)=>{console.log(arr[1])})    // Prints all values
+
+
+
+Why objects,arrays store references not by values ?
+-> 
+var obj1={} or var arr1 = []
+var obj2={} or var arr2 = []
+obj1==obj2  or arr1 == arr2;    // false
+Output is false. Because obj1 reference address is different from obj2 reference address.
+
+But if var obj2=obj1; 
+obj1==obj2 , Output is true. Because obj2 copies the reference address of obj1.
+
+
+
+var obj1=[]
+var obj2=obj1                // Shallow copying
+obj2.name="Sambit";
+console.log(obj1==obj2);    // true
+console.log(obj1);          // [ name: 'Sambit' ]
+console.log(obj2);          // [ name: 'Sambit' ]
+
+
+var obj1=[]
+var obj2=[]                  // Deep copying
+obj2.name="Sambit";
+console.log(obj1==obj2);    // false
+console.log(obj1);          // []
+console.log(obj2);          // [ name: 'Sambit' ]
+
+How to shallow copy values in object ?
+Using Object.assign(objectname);
+
+How to deep copy values using object spread operators ? 
+var obj2 = {...obj1}
+
+
