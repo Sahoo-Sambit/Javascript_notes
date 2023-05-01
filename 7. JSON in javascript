@@ -1,0 +1,108 @@
+What is JSON ?
+-> JSON is a text format for storing data as object in key-value pairs and also transporting data between computers over network.
+-> JSON is used to store data temporarily. Temporary data can be user-generated data, such as a submitted form on a website.
+-> It is easy for humans to read and write. It is easy for machines to parse and generate.
+-> JSON is a text format that is completely language independent mainly based on JS but it works on almost all programming languages.
+
+In JSON, values must be one of the following data types:
+a string
+a number
+an object
+an array
+a boolean
+null
+
+In JSON, it cannnot have:
+a function
+a date
+undefined
+
+Why do we use JSON ?
+-> A common use of JSON is to read data from a web server, and display the data in a web page. 
+-> To store Data and also to transfer data from client to server, server to client or server to server.
+
+How to access JSON data ?
+
+-> JSON is derived from javascript objects.
+-> It also stores data in key value format.
+-> Key-value data should be unique, or else it will override the previous similar key.
+
+Syntax of Object
+var obj = { name: "Sambit", age: 23, branch: "EEE" }
+console.log(obj);
+
+Syntax of JSON  (only difference is the keys are also enclosed in double quotes)
+var obj = { "name": "Sambit", "age": 23, "branch": "EEE" }
+console.log(obj);
+
+How to create Json ?
+-> { "name":"Sambit","class":5,"age":23} inside main.json
+-> var json = { "name":"Sambit","class":5,"age":23} inside script.js
+
+
+->  Storing an object in object format and in String format
+->  JSON can store objects inside arrays.
+->  JSON can store strings inside objects.
+var json = { "name":"Sambit","class":5,"age":23};
+console.log(typeof json);                         // Object
+var json = `{ "name":"Sambit","class":5,"age":23}`;
+console.log(typeof json);                         // String
+
+
+Functions working with JSON
+1. JSON.stringify()
+2. JSON.parse()
+
+1. JSON.stringify()
+->  It is used to convert an object into JSON string
+->  Whenever we want to send data from client to server, we need to convert the data in string format as strings are lightweight.
+->  Returns String
+
+2. JSON.parse()
+->  It is used to convert stringified JSON into object.
+->  Returns Object.
+-> Used in servers to parse the stringified JSON into object in backend.
+
+Mutuable objects vs Immutable objects
+-> Primitive data types are immutable. (cannot be changed)
+-> Arrays and objects are mutable objects.  (can be changed)
+
+Deep vs Shallow Copy
+Deep copy -> By primitive datas (immutable objects). Usually call by values. Any changes in copied value is not reflected to parent value.
+Because each value created has its own reference (address) to store data.
+
+Shallow copy -> By objects, arrays (mutable objects). Usually call by references. Any changes in copied value is reflected to parent value.
+Because each value created when assigned shares similar references to store data.
+
+How to create deep copy of non-primitive data types ?
+-> JSON.parse(JSON.stringify(objectname))     //Drawback we cannot copy a function
+-> Object.assign (target, source)             //We can copy a function also but we cannot deep copy on nested objects.
+  e.g. Object.assign( {}, obj1)
+-> Using spread operator                     // It fixes both the issues cloning a function, also allow deep copy to nested objects.
+
+Example solved
+let obj1 ={
+  fname:"Sambit",
+  lname: "Sahoo",
+  address: {
+    city: "Rourkela"
+  }
+}
+let obj2 ={
+  fname:"Sam",
+  lname: "hoho",
+  address: {
+    city: "Cuttack"
+  }
+}
+let objnew={...obj1,state:"Odisha",...obj2}
+obj2.address.city="Puri"
+console.log(obj1);   //{ fname: 'Sambit', lname: 'Sahoo', address: { city: 'Rourkela' } }
+console.log(obj2);   //{ fname: 'Sam', lname: 'hoho', address: { city: 'Puri' } } 
+console.log(objnew);
+{
+  fname: 'Sam',
+  lname: 'hoho',
+  address: { city: 'Puri' },
+  state: 'Odisha'
+}
