@@ -87,12 +87,20 @@ map() , filter(), reduce() are ES6 concepts and are higher order functions. Perf
 -> The length of the new array created by map() is the same as the length of the original array.
 -> The map() method does not modify the original array (deep copy)..
 -> It performs changing in property values, generate new values in array from original array.
-
+-> It takes input as values inside array, index of array, array itself.
 Example:
 var arr=[1,2,3,4,5,6,7,8,9,0]
+arr.map((value,index,arr)=>console.log(value,index,arr));
+
 var result=arr.map((number)=>number*5)
 console.log(result) //[5, 10, 15, 20, 25, 30, 35, 40, 45,  0]
 
+var arr=[12,22,28,93,1101]
+arr.map((value)=>{
+    if (value>28) {
+        console.log(value);     // 93 1101
+    }
+});
 ..................................................................................................................................
 
 ............................................................arr.filter()..........................................................
@@ -102,6 +110,7 @@ console.log(result) //[5, 10, 15, 20, 25, 30, 35, 40, 45,  0]
 -> It does not modify the original array (deep copy).
 -> The function passed to filter() should return a Boolean value indicating whether the corresponding element should be included in the new array 
 else empty array will be printed.
+-> It takes input as values inside array, index of array, array itself.
 
 Example:
 var arr=[1,2,,3,4,5,6,7,8,9,0]
@@ -109,6 +118,13 @@ var result=arr.filter((number)=>{number>5})
 console.log(result)                             //  it returns empty array
 var result=arr.filter((number)=>number>5)
 console.log(result)                             //  it returns true all true values satisfying the condition
+
+var arr=[12,22,28,93,1101]
+var a = arr.filter((value,index,array)=>{
+    return array[index]>25;
+});
+console.log(a);                             //  [ 28, 93, 1101 ]
+
 
 .................................................................................................................................
 
@@ -121,6 +137,7 @@ Steps:
 -> The first time that the callback is run there is no "return value of the previous calculation". 
 ->  If supplied, an initial value may be used in its place. 
 ->  Otherwise the array element at index 0 is used as the initial value and iteration starts from the next element (index 1 instead of index 0).
+->  It takes in argument as accumulator, value, index, array.
 
 Example 1:
 var arr=[1,2,3,4,5]
@@ -134,8 +151,62 @@ var a=[1,2,3,4,5]
 var res=arr.reduce((number)=> {return number+5})     Wrong !    //Single input is wrong approach
 console.log(res)  // 11
 
+var arr=[12,22,28,93,1101]
+var a = arr.reduce((total,value,index,array)=>{
+    return total + array[index];
+});
+console.log(a);                       // 1256
+
+
 .................................................................................................................................
 
 Difference between map and filter
 -> Map creates a new array and stores a transformed array using function provided.
 -> Filter is used to filter elements from array using conditional statements true or false.
+
+.................................................................................................................................
+
+every() Method
+The every() method checks if all array values pass a test.
+Returns a boolean value
+
+var arr=[121,22,28,93,1101]
+var a = arr.every((value,index,array)=>{
+    return  array[index]>18;
+});
+console.log(a);     // true
+
+some() method
+The some() method checks if some array values pass a test.
+Returns a boolean value
+
+var arr=[11,2,2,3,1]
+var a = arr.every((value,index,array)=>{
+    return  array[index]>18;
+});
+console.log(a);     // false
+
+Convert a string into an array
+console.log(Array.from("ABCDEFG"));    // ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+console.log("ABCDEFG".split(""));      // ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+
+
+The entries() method returns an Array Iterator object with key/value pairs:
+
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+const f = fruits.entries();
+for (const x of f) {
+    console.log (x);
+}
+
+
+[0, "Banana"]
+[1, "Orange"]
+[2, "Apple"]
+[3, "Mango"]
+
+
+Array.includes(element); // returns boolean value
+
+
+
