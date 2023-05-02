@@ -1,0 +1,75 @@
+What is a javascript scope ?
+Scope determines the visibility of variables.
+
+JS has 3 scopes : 
+1. Global scope       var is global scope
+2. Block scope        let and const are block scope
+3. Function scope
+
+Before ES6, JS has only Global and function scope.
+
+
+let, const (Block scope)
+{
+  let x = 2;
+}
+// x can NOT be used here
+
+
+
+var keyword (Global scope)
+var x = 1;
+{
+  var x = 2;
+}
+// x can be used here and value = 2
+
+
+carName variable is a local variable used within function(function scope)
+// code here can NOT use carName
+function myFunction() {
+  let carName = "Volvo";                      // Function scope
+  // code here CAN use carName
+}
+// code here can NOT use carName
+If you assign a value to a variable that has not been declared, it will automatically become a GLOBAL variable.
+In "Strict Mode", undeclared variables are not automatically global.
+
+Global scope are variables declared outside any function and can be accessed anywhere in the program.
+In javascript, object and functions are also variables.
+..................................................................END OF SCOPE.......................................................................
+
+..............................................................Javascript Hoisting....................................................................
+
+What is Hoisting ?
+Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope.
+
+In JavaScript, a variable can be declared after it has been used. In other words; a variable can be used before it has been declared.
+
+Variables defined with let and const are hoisted to the top of the block, but not initialized.
+Using a let variable before it is declared will result in a ReferenceError.
+Using a const variable before it is declared, is a syntax error.
+
+
+JavaScript only hoists declarations, not initializations. JavaScript Initializations are Not Hoisted
+
+var x = 5; // Initialize x
+var y;     // Declare y
+
+elem = document.getElementById("demo"); // Find an element
+elem.innerHTML = x + " " + y;           // Display x and y      x = 5 , y = undefined
+
+y = 7; 
+
+
+JavaScript in strict mode does not allow variables to be used if they are not declared.
+
+.....................................................................Strict Method................................................................
+
+"use strict"; Defines that JavaScript code should be executed in "strict mode".
+ Why use strict ?
+ -> Strict mode makes it easier to write "secure" JavaScript.
+ -> Strict mode changes previously accepted "bad syntax" into real errors.
+ -> The this keyword in functions behaves differently in strict mode. Returns undefined.
+ 
+
