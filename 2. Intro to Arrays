@@ -101,6 +101,8 @@ arr.sort()                                   //Sorts the array in lexicographica
 arr.sort((a,b)=>return a-b);                //Sorts the array in ascending order
 arr.sort((a,b)=>return b-a);               //Sorts the array in descending order
 arr.toString();                           //Converts the array to string
+Math.max.apply(null, arr)                //Finds the maximum value of an array object
+Math.min.apply(null, arr)               //Finds the minimum value of an array object
 ..................................................................................................................................
 
 * Question 1
