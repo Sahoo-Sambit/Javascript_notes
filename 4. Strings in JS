@@ -78,9 +78,17 @@ A regular expression is a sequence of characters that specifies a match pattern 
 Syntax:
 /character/gi     -> g-> Global  i-> It ignores upper and lower cases
 
+Functions performed using RegX:
+1. search() function
+let text = "Visit W3Schools";
+let n = text.search(/w3schools/i);    // n = 6
+
+2. replace() function
+let text = "Visit Microsoft!";
+let result = text.replace(/microsoft/i, "W3Schools");       // Visit W3Schools!
  
- match() Function is an inbuilt function in JavaScript used to search a string for a match against any regular expression. 
- If the match is found, then this will return the match as an array.
+3. match() Function is an inbuilt function in JavaScript used to search a string for a match against any regular expression. 
+If the match is found, then this will return the match as an array.
 
 const paragraph = 'The quick brown fox jumps over the lazy dog. It barked.';
 const regex = /[A-Z]/g;                     //To search all letters from A to Z.
