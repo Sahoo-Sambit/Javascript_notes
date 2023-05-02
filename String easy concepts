@@ -1,0 +1,125 @@
+String is a group of characters.
+
+Methods in String
+.........................................
+
+.length Method
+let text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+let length = text.length;       // 26
+
+.........................................
+
+Extracting parts of String
+.slice(startindex, endindex-1)
+.substring(startindex, endindex-1)
+.substr(startindex, length_of_characters_to_be_deleted)
+
+If index value is -ve, then the search starts from end of the string
+
+let str = "Apple, Banana, Kiwi";
+let part = str.substr(-4);        // Kiwi
+
+.........................................
+
+.replace("existing word","new word")
+Only 1st match will be replaced.
+It returns a new string
+.replaceAll("existing word", "new word")
+It replaces all the matches of the existing word in string.
+It returns a new string
+
+.........................................
+
+.toUpperCase()
+.toLowerCase()
+
+........................................
+
+str1.concat(str2);
+str1.concat(" ",str2);    // Inserts a space between 2 strings
+
+........................................
+
+.trim();    // removes white spaces from starting and ending of string
+.trimStart(); // removes white spaces from starting of string
+.trimEnd(); // removes white spaces from ending of string
+
+.padStart()   // It pads a string with x until it reaches length of length-1. (3)
+let text = "5";
+let padded = text.padStart(4,"x");    // xxx5
+
+.padEnd()   // It pads a string with another string (multiple times) until it reaches a given length.
+let text = "5";
+let padded = text.padEnd("x",4);    // 5xxx
+
+...........................................
+
+.charAt(index)       // returns the character from index position
+.charCodeAt(index)   // returns ASCII value of the character
+.split(",")         // splits the string into array divided by , 
+
+...........................................
+
+.................................................................................................................................................
+
+String Searching Methods
+
+.indexOf()
+.lastIndexOf()
+.search()       // similar to indexOf()
+.match()        // mentioned in another file
+.includes()     // mentioned in another file returns a boolean value
+.startsWith()   // case sensitive returns boolean
+.endsWith()     // case sensitive returns boolean
+
+................................................................................................................................................
+
+String Template Literals
+
+var l = `I am a boy. My name is "Sambit Sahoo"`;    // Note there is no use of escape sequence to add "" and it prints easily.
+var fname = "Sambit";
+var lname = "Sahoo";
+var bio = `Hi I am ${fname} ${lname} `;
+
+Template literals allow expressions in strings.
+let price = 10;
+let VAT = 0.25;
+let total = `Total: ${(price * (1 + VAT)).toFixed(2)}`;
+console.log(total);                   // Total: 12.50
+
+Automatic replacing of expressions with real values is called string interpolation.
+
+*************************Comparing two JavaScript objects always returns false.********************************
+let x = new Number(500);
+let y = new Number(500);
+x===y     // false
+x==y      // true
+
+*************************A bigInt cannot contain decimals, cannot be evaluated with other datatypes********************************
+let x = 5n;
+let y = x / 2;
+console.log (y)      // Error
+
+console.log( x / 2n );    // 2n
+
+
+var x = NUMBER.MAX_SAFE_INTEGER();    //   9007199254740991
+var y = NUMBER.MIN_SAFE_INTEGER();    //  -9007199254740991
+
+Number.isInteger()            // if argument is an integer return true
+Number.isSafeInteger()        // if argument is a safe integer lies within -9007199254740991 and 9007199254740991
+
+..................................................................................................................................................
+
+Javascript arrays are special type of objects.
+var arr = [];
+console.log ( typeof arr );   // object
+To solve this problem, Array.isArray(arr) is introduced. Returns true if arr is array else not.
+
+In JavaScript, arrays use numbered indexes.  
+In JavaScript, objects use named indexes.
+
+
+
+
+
