@@ -181,7 +181,7 @@ The some() method checks if some array values pass a test.
 Returns a boolean value
 
 var arr=[11,2,2,3,1]
-var a = arr.every((value,index,array)=>{
+var a = arr.some((value,index,array)=>{
     return  array[index]>18;
 });
 console.log(a);     // false
