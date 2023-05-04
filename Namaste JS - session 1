@@ -1,0 +1,219 @@
+Javascript : Everything in JS happens inside execution context.
+
+Execution context has 2 components :
+1. Memory component (Variable Environment)
+2. Code component (Thread of execution)
+
+Javascript is a synchronous single threaded language.
+-> Single Threaded : Execute one command at a time
+-> Synchronous : Every statement of the code gets executed one by one where execution doesnot move to new line until it finishes current line of code. It only sends single request at a time.
+
+What happens when you run a program inside javascript ?
+-> When we run a program, GEC ( Global execution context ) is created in 2 phases. 
+......................................................................................................................................................................
+How this code runs ?
+var n = 2;
+function square (num){
+       var ans = num * num;
+       return ans;
+}
+var square2 = square (n)
+var square3 = square (4)
+
+*********************************************************************************************************************************************************************
+
+Phase 1. Memory Creation phase : It skims through all code line by line and starts allocating spaces. It allocates memory to all variables as undefined and functions are stored as whole code even before single line is executed.
+n: undefined
+function square {...} 
+square2 = undefined
+square3 = undefined
+
+Phase 2. Code execution phase :  Now JS once again runs through whole code line by line and execution of code takes place. The values like n = 2 is allocated in memory component. (Variable Environment)
+Now in square2, function invocation takes place. A new execution context is created.
+It also contain memory and code component inside GEC.
+
+*********************************************************************************************************************************************************************
+
+In another execution context (i.e. inside GEC), memory creation phase takes place. Now variables are allocated memory with 
+num: undefined, 
+ans: undefined as in phase 1.
+In another execution context (i.e. inside GEC), code execution phase takes place. Now the value of n=2 in GEC memory component is passed to num: 2. 
+ans: 2 * 2 = 4 and returns ans to square (n) as in phase 2.
+Now, square2 = 4 and moves to next line after deleting the inner execution context.
+
+*********************************************************************************************************************************************************************
+
+Similarly another execution context is created inside GEC, and now similarly the flow goes on. Where num inside execution context num = 4 and rest goes on.
+After complete javascript program execution, the whole GEC gets deleted from memory.
+
+.....................................................................................................................................................................
+
+
+----------------------------------------------------------------------Hoisting in Javascript-------------------------------------------------------------------------
+
+What is Hoisting ?
+=> Hoisting is accessing functions, variables even before declaring them.
+For var variables, we get undefined. But in functions execution takes place.
+
+console.log(x)                  // undefined
+console.log(getName)           // undefined getName is not a function anymore. It is a variable storing a function.
+var x = 7;
+var getName = ( )=>{
+ console.log("Namaste JS");
+}
+
+a();
+function a() {
+    console.log("Sambit Sahoo");  // Sambit Sahoo is logged in console. Accessing functions before declaring them.
+}
+.....................................................................................................................................................................
+
+How functions work in JS ?
+What is call stack ?
+->   A JavaScript call stack is an example of a stack data structure. In a JS call stack, the elements are function invocations. Every time you invoke a function, it’s added to the stack.
+
+var x = 1;                       // Inside Global Memory
+a ( );                          // Inside Local Memory
+b ( );                         // Inside Local Memory
+console.log (x);              // Inside Global Memory
+
+function a ( ) {
+   var x=10;
+   console.log (x);
+}
+function b ( ) {
+   var x=100;
+   console.log (x);
+}
+
+.....................................................................................................................................................................
+
+Shortest javascript program
+->  It's an empty js file.
+->  Global execution context is created.
+->  window object has lots of methods and properties. It is a global object created before any JS file code runs. Window is a global object created in browser only.
+    window === this  (both objects are equal)
+->  Any variable and functions declared outside functions, in global space, they got attached to window object.
+->  JS runs on servers, browsers, mobile, etc.
+
+.....................................................................................................................................................................
+
+var a =10;
+function b( ) {
+       var x = 10;
+}
+console.log ( x ) // x is not defined.
+
+window.a === this.a === a           // 10
+
+ Undefined vs Not defined
+-> Undefined is not empty. It's like a placeholder for variable and it remains defined in variable until any value is assigned in it. 
+-> If we want to access a variable which is not declared in entire program it throws an error non-defined. 
+
+....................................................................................................................................................................
+
+Scope Chain
+-> Related to lexical environment
+ 
+Lexical environment = EC's Local Memory + Reference to Lexical Environment of its parent.
+Lexical meaning: Hierarchy
+
+Lexical Environment of its parent is the scope where a function is physically present or defined. So, suppose a function x(), is defined and invoked in the GEC, when function x()'s EC is pushed in the call stack, it stores a reference to its parent's lexical environment i.e. the GEC's memory.
+Whenever a new Execution Context is pushed in the Call Stack it holds a reference to the Lexical Environment of its parent, i.e. the EC's memory from where it was invoked.
+Global execution context holds reference to null.
+
+Javascript engine first looks for the variable/function being accessed in the local scope of the function, and if not found, it keeps on searching the lexical environment of its parent until it finds the variable/function being accessed.
+The mechanism mentioned above is called SCOPE CHAIN.
+If the variable accessed is not found in the Scope Chain, then you will get the variable is not defined error in the  browser's console.
+
+..........................................................Let, Const, Var...........................................................................................
+
+Let and Const
+1. let and const are hoisted but its memory is allocated at other place (script memory space) than window which cannot be accessed before initialisation. let and const are in block scope.
+2. Temporal Dead Zone exists until variable is declared and assigned a value.
+3. window.variable OR this.variable will not give value of variable defined using let or const.
+4. We cannot redeclare the same variable with let/const.
+5. const variable declaration and initialisation must be done on the same line.
+6. There are three types of error: 
+  [1] referenceError {given where variable does not have memory allocation} 
+      console.log(x); 
+      let x=90; //reference error
+      
+  [2] typeError {given when we change type that is not supposed to be changed}  
+      const a=100; 
+      a=90; //Type error
+  [3] syntaxError {when proper syntax(way of writing a statement) is not used}.
+      let x=19; 
+      let x=100; //Syntax error
+      const a; 
+      a=100; //syntax error
+7. Use const wherever possible followed by let, Use var as little as possible(only if you have to). It helps avoid error.
+8. Initialising variables at the top is good idea, helps shrinks TDZ to zero.
+
+.....................................................................BLOCK SCOPE....................................................................................
+
+Idea of Block scope
+1. Code inside curly bracket is called block.
+2. Multiple statements are grouped inside a block so it can be written where JS expects single statements like in if, else, loop, function etc.
+var a = 1;
+{
+   var a = 12;         // Global scope
+   let b =12;         // Block scope
+   const c = 12;     // Block scope
+}
+console.log (a);     // 12
+Block scope is limited within the { } braces.
+
+Block values are stored inside separate memory than global. They are stored in block.
+
+*************************************************************************************************************************|
+Global scope for let variable is script. Inside this, block scope is defined for let and const variables.                |
+For var variables are declared in global scope only. let and const are hoisted and are put in separate memory space.     |
+Stores undefined inside script or block scope at first.                                                                  |
+*************************************************************************************************************************|
+
+....................................................................................................................................................................
+
+Shadowing
+-> Shadowing is the concept in which let, var, const are shadowed over its old value . 
+-> In case of let, const the variable in script scope is shadowed by inner block scope. While in var, same variable is updated with newer value in global scope.
+-> Block values are stored inside separate memory than global. They are stored in block. (the reason let and const are called block scope)
+-> Block scope are lexically scoped.
+-> For var variables are declared in global scope only. let and const are hoisted and are put in separate memory space.
+   Stores undefined inside script or block scope at first. Shadowing works with values and functions.
+
+Shadowing of values
+var a = 19;                    // Global a =19
+let b =9;                     // Script b = 9
+const c = 999;               // Script c = 999
+{
+var a = 1;                // Global a = 1; shadowed
+let b=2;                 // Block b = 2;  shadowed
+{ 
+   var a = 9;            // Global a = 9; shadowed
+   let  b = 8;          // Block b = 8; shadowed
+  const c = 7;         //  Block c = 7; shadowed
+}
+const c=3;              //  Block c = 3;   shadowed
+}                      // end of shadowing now, a = 9
+                      // end of shadowing now, b = 9
+                     // end of shadowing now, c = 999
+console.log (a)     // 1
+console.log(b)     // 9
+console.log(c)    // 999
+
+legal Shadowing 
+let a = 32;
+{
+let b = 80;
+}
+Illegal shadowing
+let a = 32;
+{
+var b = 80;
+}
+
+
+
+
+
