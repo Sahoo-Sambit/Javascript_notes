@@ -1,0 +1,10 @@
+Javascript : Everything in JS happens inside execution context.
+
+Execution context has 2 components :
+1. Memory component (Variable Environment)
+2. Code component (Thread of execution)
+
+Javascript is a synchronous single threaded language.
+-> Single Threaded : Execute one command at a time
+-> Synchronous : Every statement of the code gets executed one by one where execution doesnot move to new line until it finishes current line of code. It only sends single request at a time.
+
