@@ -1,0 +1,61 @@
+What is closure in Javascript ?
+-> A function with it's outer environment (lexical scope) bundled together is called closure.
+-> A closure gives you access to an outer function's scope from an inner function.
+-> Everytime when we create a JS function, a closure is created.
+
+function xyz() {
+    const a=5;
+    function b() {
+        console.log(a);         // Closure (xyz) contains a=5;
+    }
+    b();
+}
+xyz();
+
+-> In JS, we have the flexibility to return a function inside another function also.. Surprising right..!? Yes.. you can return functions also.
+
+Another example of closure
+function parent() {
+    const a=500;
+    function child() {                                                                return function child(){
+        console.log(a);         // Closure (xyz) contains a=5;                             console.log(a);                    // Both functions are same
+    }                                                                                 }
+    return child;
+}
+var x = parent();         // After returning child, both parent() & child() gets removed from memory. But x still stores the lexical environment of parent() function
+x ();                    // Output 500
+
+
+
+Corner cases
+1. 
+
+function parent() {
+    var a=500;
+    function child() {                                                                
+        console.log(a);         // It will take reference of a not value. So, 100 will be printed.                         
+    }
+    a=100;
+    return child;
+}
+var x = parent();           // After returning child, both parent() & child() gets removed from memory. But x still stores the lexical environment of parent() function
+x ();                      // Output 100 
+
+
+Uses of closures
+-> setTimeOuts
+-> Iterators
+-> Module design Pattern
+-> Currying
+-> Functions like once
+-> Maintaining state in async world
+.....many more.....
+
+
+
+
+
+
+
+
+
