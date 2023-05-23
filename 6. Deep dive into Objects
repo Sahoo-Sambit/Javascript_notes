@@ -109,3 +109,35 @@ How to deep copy values using object spread operators ?
 var obj2 = {...obj1}
 
 
+ShallowCopy defines any change in 1 more level deeper would actually change the original object.
+Types of shallow copy:
+1. Object.assign()
+2. Spread Operators
+
+
+let addressObject = { city:'Rourkela', state:'Odisha'}
+let person ={
+  name: "Sambit",
+  address: addressObject
+};
+
+let sCopy = Object.assign({}, person) or let sCopy={...person}
+sCopy.name = "S"
+sCopy.address.city = "Bhubaneswar"
+console.log(sCopy, person)              // sCopy{ name:"S", address:{ city: 'Bhubaneswar', state: 'Odisha'}}
+                                        // person{ name:"Sambit", address:{ city: 'Bhubaneswar', state: 'Odisha'}}
+
+
+DeepCopy defines any change in 1 more level deeper would not actually affect the original object.
+Types of deep copy:
+1. JSON.stringify()
+2. JSON.parse()
+3. Using browser API    structuredClone(person);
+
+
+
+
+
+
+
+
