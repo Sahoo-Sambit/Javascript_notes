@@ -1,0 +1,32 @@
+Basically, arguments keyword refers to the object that contains all arguments passed to the function.
+It is a array like object. But not an array.
+
+function ArrayList(){
+console.log(arguments);   // It prints an array like structure but it is not an array. Array functions won't work here.
+}
+ArrayList(1,2,3,4,5);
+
+We can convert it to array using :
+
+function ArrayList(){
+const values = Array.from(arguments)
+console.log(values);          // [1,2,3,4,5]   Successfully converted to array. 
+
+// Performing reduce operations in array.
+const sum = values.reduce(function (acc, curr){
+  return acc + curr;
+},0)
+  return sum;                  //  15
+}
+console.log(ArrayList(1,2,3,4,5));
+
+Similarly, we use ... spread operator in javascript to avoid such confusions using arguments.
+It will directly convert all arguments into an array. All array operations can be performed accordingly.
+
+
+function sumWithArguments(...values){
+const sum = values.reduce(function (acc, curr){
+  return acc + curr;
+},0)
+}
+console.logsumWithArguments(1,2,3,4,5)
