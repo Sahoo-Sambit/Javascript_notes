@@ -30,3 +30,55 @@ const sum = values.reduce(function (acc, curr){
 },0)
 }
 console.logsumWithArguments(1,2,3,4,5)
+
+Arrow function vs Normal function
+-> Arrow functions can have both explicit and implict return.
+
+let add = (a,b)=>a+b   // Implicit return
+console.log(add(2,3))   //  5
+
+let add = (a,b)=>{
+  return a+b          // Explicit return
+}
+console.log(add(2,3))    //  5
+
+-> Arguments is not defined in arrow function while it is in normal function.
+
+function add(){
+  return arguments
+}
+console.log(add(2,3))
+
+let add = ()=>{ console.log(arguments) }
+console.log(add(2,3))
+
+-> Object binding using this keyword
+Not working on arrow function but works on normal function.
+When we call this keyword, it will refer to the current object inside normal function 
+but in arrow function this will refer to global Window object.
+
+-> Arrow function is not a constructor unlike normal functions
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
