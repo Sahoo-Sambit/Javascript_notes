@@ -59,16 +59,65 @@ but in arrow function this will refer to global Window object.
 
 -> Arrow function is not a constructor unlike normal functions
 
+Call, Apply, Bind
+
+Call method
+
+1.
+const user1 = { 
+      name: "Sambit", 
+      greetUser: function{
+      console.log(`Hello, ${this.name}`)
+  }
+}
+
+const user2 = { 
+      name: "Peter",
+}
+
+user1.greetUser.call(user2);  // Call will change this reference from object user1 to object user2 
+                              // used to borrow function     
+                              // Hello, Peter
+
+2.
+const user1 = { 
+      name: "Sambit", 
+}
+const user2 = { 
+      name: "Peter",
+}
+
+function greetUser(city, age){
+      console.log(`Hello, ${this.name}. I am from city ${city}. My age is ${age}`)
+}
+
+greetUser.call(user1, 'Rourkela', 24)   // Hello, Sambit. I am from city Rourkela. My age is 24
+greetUser.call(user2, 'Cuttack', 23)   // Hello, Peter. I am from city Cuttack. My age is 23
 
 
+Apply method
+This method is also similar to call method. But in call method, we pass arguments as individual elements but in apply method, we pass the elements as array.
+greetUser.call(user2, ['Cuttack', 23]) is similar to line 95.
 
 
+Bind method
+This method is used to borrow an object from another object.
 
+const person = {
+  firstName:"John",
+  lastName: "Doe",
+  fullName: function() {
+    return this.firstName + " " + this.lastName;
+  }
+}
 
+const member = {
+  firstName:"Hege",
+  lastName: "Nilsen",
+}
 
-
-
-
+let fullName = person.fullName.bind(member);      // fullName is a function storing the member object reference in fullName function
+console.log(fullName())    // Hege Nilsen        //  Once we call this fullName() it will return Hege Nilsen 
 
 
 
