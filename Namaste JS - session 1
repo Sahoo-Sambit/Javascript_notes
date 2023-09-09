@@ -90,11 +90,14 @@ function b ( ) {
 
 Shortest javascript program
 ->  It's an empty js file.
+->  When a javascript program runs, a global execution context is created along with a window object and a this keyword.
 ->  Global execution context is created.
 ->  window object has lots of methods and properties. It is a global object created before any JS file code runs. Window is a global object created in browser only.
     window === this  (both objects are equal)
 ->  Any variable and functions declared outside functions, in global space, they got attached to window object.
+->  window object contains all variables and functions on outside of scope i.e. at global level.
 ->  JS runs on servers, browsers, mobile, etc.
+->  this keyword is generated along with global execution context and also along with functional execution context inside global execution context. 
 
 .....................................................................................................................................................................
 
@@ -131,7 +134,12 @@ If the variable accessed is not found in the Scope Chain, then you will get the 
 Let and Const
 1. let and const are hoisted but its memory is allocated at other place (script memory space) than window which cannot be accessed before initialisation. let and const are in block scope.
 2. Temporal Dead Zone exists until variable is declared and assigned a value.
-3. window.variable OR this.variable will not give value of variable defined using let or const.
+3. var datatype variables are attached to the window object or this. But let and const are present in separate memory space.
+       var a = 12;
+       console.log(window.a)       // 12  
+       let b = 12;
+       console.log(window.b)       // undefined 
+       
 4. We cannot redeclare the same variable with let/const.
 5. const variable declaration and initialisation must be done on the same line.
 6. There are three types of error: 
